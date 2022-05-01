@@ -3,9 +3,9 @@ python_test_utils(
     sources=["conftest.py", "optional.py", "util.py"],
 )
 
-file(
+files(
     name="toml",
-    source="empty.toml",
+    sources=["*.toml"],
 )
 
 python_tests(
