@@ -1,6 +1,6 @@
 python_test_utils(
     name="test_utils",
-    sources = ["conftest.py", "optional.py"],
+    sources = ["conftest.py", "optional.py", "util.py"],
 )
 
 python_tests(
