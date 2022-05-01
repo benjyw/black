@@ -1,0 +1,29 @@
+[GLOBAL]
+pants_version = "2.11.0rc5"
+backend_packages = [
+    "pants.backend.python",
+    "pants.backend.python.lint.black",
+]
+pants_ignore = [
+    "!src/_black_version.py"
+]
+
+[source]
+root_patterns = [
+    '/',
+    '/src',
+]
+
+[anonymous-telemetry]
+enabled = true
+repo_id = "C6339CF0-26A0-43B3-8DF0-2E8E2A3DE28C"
+
+[python]
+interpreter_constraints = [">=3.6.2"]
+enable_resolves = true
+resolves = { python-default = "lockfiles/python-default.lock" }
+default_resolve = "python-default"
+lockfile_generator = "pex"
+
+[pytest]
+lockfile = "lockfiles/pytest.lock"
