@@ -14,6 +14,7 @@ python_tests(
         ":test_utils",
         ":toml",
         "src:extra-d",
+        "src:extra-jupyter",
         "tests/data"
     ],
 )
