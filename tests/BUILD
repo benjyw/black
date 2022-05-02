@@ -11,6 +11,7 @@ files(
 python_tests(
     name="tests",
     dependencies=[
+        "//:test_format_files",
         ":test_utils",
         ":toml",
         "src:extra-d",
