@@ -1,6 +1,6 @@
 pex_binary(
-    name="__init__",
-    entry_point="__init__.py",
+    name="main",
+    entry_point="__main__.py",
 )
 
 python_sources()

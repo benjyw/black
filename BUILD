@@ -1,10 +1,17 @@
 pex_binary(
     name="fuzz",
+    dependencies=[":fuzz_py"],
     entry_point="fuzz.py",
 )
 
 python_sources(
-    name="root",
+    sources=["fuzz.py"],
+    name="fuzz_py",
+)
+
+python_sources(
+    sources=["setup.py"],
+    name="setup_py",
 )
 
 python_requirements(
@@ -14,6 +21,26 @@ python_requirements(
 python_requirements(
     name="test_requirements",
     source="test_requirements.txt",
+)
+
+resources(
+    name="build_resources",
+    sources=["pyproject.toml", "setup.cfg", "README.md", "CHANGES.md"],
+)
+
+python_distribution(
+    name = "dist",
+    dependencies=[
+        ":build_resources",
+        ":setup_py",
+        "src/black",
+    ],
+    provides=python_artifact(
+        name="black",
+        version="9.9.9",
+    ),
+    wheel_config_settings={"--global-option": ["--python-tag", "py37.py38.py39"]},
+    generate_setup = False,
 )
 
 files(
