@@ -13,6 +13,7 @@ python_tests(
     dependencies=[
         ":test_utils",
         ":toml",
+        "src:extra-d",
         "tests/data"
     ],
 )
