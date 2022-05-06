@@ -2,7 +2,8 @@
 pants_version = "2.11.0rc6"
 backend_packages = [
     "pants.backend.python",
-    "pants.backend.python.lint.black",
+    #"pants.backend.python.lint.black",
+    "pants.backend.python.typecheck.mypy",
     "pants.backend.experimental.python",
 ]
 pants_ignore = [
