@@ -18,14 +18,9 @@ python_requirements(
     name = "requirements",
 )
 
-python_requirements(
-    name="test_requirements",
-    source="test_requirements.txt",
-)
-
 resources(
     name="build_resources",
-    sources=["pyproject.toml", "setup.cfg", "README.md", "CHANGES.md"],
+    sources=["pyproject.toml", "README.md", "CHANGES.md"],
 )
 
 python_distribution(

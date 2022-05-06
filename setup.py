@@ -72,10 +72,10 @@ else:
 
 setup(
     name="black",
-    use_scm_version={
-        "write_to": "src/_black_version.py",
-        "write_to_template": 'version = "{version}"\n',
-    },
+    # use_scm_version={
+    #     "write_to": "src/_black_version.py",
+    #     "write_to_template": 'version = "{version}"\n',
+    # },
     description="The uncompromising code formatter.",
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
