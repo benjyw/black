@@ -12,6 +12,7 @@ python_sources(
 python_sources(
     sources=["setup.py"],
     name="setup_py",
+    interpreter_constraints=[">=3.8,<3.9"],  # TODO: Parametrize
 )
 
 python_requirements(
@@ -34,7 +35,7 @@ python_distribution(
         name="black",
         version="9.9.9",
     ),
-    wheel_config_settings={"--global-option": ["--python-tag", "py37.py38.py39"]},
+    #wheel_config_settings={"--global-option": ["--python-tag", "py37.py38.py39"]},
     generate_setup = False,
 )
 
