@@ -70,12 +70,22 @@ if USE_MYPYC:
 else:
     ext_modules = []
 
+if os.environ.get("_RUNNING_IN_PANTS") == "1":
+    from black_version import version as __version__
+    version_kwargs = {
+        "version": __version__
+    }
+else:
+    version_kwargs = {
+        "use_scm_version": {
+            "write_to": "src/_black_version.py",
+            "write_to_template": 'version = "{version}"\n',
+        },
+    }
+
 setup(
     name="black",
-    # use_scm_version={
-    #     "write_to": "src/_black_version.py",
-    #     "write_to_template": 'version = "{version}"\n',
-    # },
+    **version_kwargs,
     description="The uncompromising code formatter.",
     long_description=get_long_description(),
     long_description_content_type="text/markdown",

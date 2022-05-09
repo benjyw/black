@@ -17,7 +17,7 @@ root_patterns = [
 ]
 
 [subprocess-environment]
-env_vars.add = ["BLACK_USE_MYPYC"]
+env_vars.add = ["_RUNNING_IN_PANTS=1", "BLACK_USE_MYPYC"]
 
 [anonymous-telemetry]
 enabled = true
