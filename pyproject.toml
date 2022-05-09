@@ -26,12 +26,7 @@ preview = true
 # NOTE: You don't need this in your own Black configuration.
 
 [build-system]
-requires = [
-  "setuptools>=45.0",
-  "setuptools_scm[toml]>=6.3.1",
-  "wheel",
-  "mypy==0.920",
-]
+requires = ["setuptools>=45.0", "setuptools_scm[toml]>=6.3.1", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.pytest.ini_options]
