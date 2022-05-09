@@ -75,7 +75,7 @@ from black.handle_ipynb_magics import (
 from blib2to3.pytree import Node, Leaf
 from blib2to3.pgen2 import token
 
-from _black_version import version as __version__
+from black_version import version as __version__
 
 COMPILED = Path(__file__).suffix in (".pyd", ".so")
 
