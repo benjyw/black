@@ -33,10 +33,10 @@ python_distribution(
     ],
     provides=python_artifact(
         name="black",
-        version="9.9.9",
     ),
     wheel_config_settings={"--global-option": ["--python-tag", "py3"]},
     generate_setup = False,
+    sdist = False,
     uses_mypyc = True,
 )
 

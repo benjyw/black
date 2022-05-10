@@ -6,9 +6,6 @@ backend_packages = [
     "pants.backend.python.typecheck.mypy",
     "pants.backend.experimental.python",
 ]
-pants_ignore = [
-    "!src/_black_version.py"
-]
 
 [source]
 root_patterns = [
