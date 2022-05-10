@@ -19,6 +19,11 @@ python_requirements(
     name = "requirements",
 )
 
+python_requirements(
+    name = "test-requirements",
+    source = "test_requirements.txt",
+)
+
 resources(
     name="build_resources",
     sources=["pyproject.toml", "README.md", "CHANGES.md"],

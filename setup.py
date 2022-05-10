@@ -72,9 +72,8 @@ else:
 
 if os.environ.get("_RUNNING_IN_PANTS") == "1":
     from black_version import version as __version__
-    version_kwargs = {
-        "version": __version__
-    }
+
+    version_kwargs = {"version": __version__}
 else:
     version_kwargs = {
         "use_scm_version": {

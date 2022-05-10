@@ -6,7 +6,11 @@
 // {
 //   "version": 2,
 //   "valid_for_interpreter_constraints": [
-//     "CPython>=3.6.2"
+//     "CPython<3.11,<3.7,>=3.6.2",
+//     "CPython<3.11,==3.10.*,>=3.6.2",
+//     "CPython<3.11,==3.7.*,>=3.6.2",
+//     "CPython<3.11,==3.8.*,>=3.6.2",
+//     "CPython<3.11,==3.9.*,>=3.6.2"
 //   ],
 //   "generated_with_requirements": [
 //     "pytest-cov!=2.12.1,<3.1,>=2.12",
@@ -124,11 +128,6 @@
               "algorithm": "sha256",
               "hash": "174cf9b4bef0db2e8244f82059a5a72bd47e1d40e71c68ab055425172b16b7d0",
               "url": "https://files.pythonhosted.org/packages/00/dc/fa0481e9840b780d770f698f5a50f591ce2009e5dfbbc9ce469536a219b0/coverage-6.2-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl"
-            },
-            {
-              "algorithm": "sha256",
-              "hash": "b637c57fdb8be84e91fac60d9325a66a5981f8086c954ea2772efe28425eaf64",
-              "url": "https://files.pythonhosted.org/packages/06/1a/06ebf8430a2d821f022ab3fb57905df075f10e03612b9e2306d306addf92/coverage-6.2-cp311-cp311-win_amd64.whl"
             },
             {
               "algorithm": "sha256",
@@ -272,11 +271,6 @@
             },
             {
               "algorithm": "sha256",
-              "hash": "13362889b2d46e8d9f97c421539c97c963e34031ab0cb89e8ca83a10cc71ac76",
-              "url": "https://files.pythonhosted.org/packages/c2/c1/7d7c1960b80383f24adb010b5957d8e6847621125dae8d8393172ed3de13/coverage-6.2-cp311-cp311-macosx_10_14_x86_64.whl"
-            },
-            {
-              "algorithm": "sha256",
               "hash": "600617008aa82032ddeace2535626d1bc212dfff32b43989539deda63b3f36e4",
               "url": "https://files.pythonhosted.org/packages/c6/c0/dba91b86fd52388a2c6ede945eea298cd0fc913a2f2d277cd8c35617ec30/coverage-6.2-cp37-cp37m-win32.whl"
             },
@@ -294,11 +288,6 @@
               "algorithm": "sha256",
               "hash": "c332d8f8d448ded473b97fefe4a0983265af21917d8b0cdcb8bb06b2afe632c3",
               "url": "https://files.pythonhosted.org/packages/d2/41/87d1e548a0418b24cff9c60815ea2cc2d0e0cd4891337a24236a30a1d141/coverage-6.2-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl"
-            },
-            {
-              "algorithm": "sha256",
-              "hash": "22e60a3ca5acba37d1d4a2ee66e051f5b0e1b9ac950b5b0cf4aa5366eda41d47",
-              "url": "https://files.pythonhosted.org/packages/d3/e8/af92f858651a3a819e16e6490a11299f3ea03ac16df5f5cae47b54f037ca/coverage-6.2-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.whl"
             },
             {
               "algorithm": "sha256",
@@ -628,21 +617,25 @@
         }
       ],
       "platform_tag": [
-        "cp36",
-        "cp36m",
-        "macosx_10_16_x86_64"
+        "cp310",
+        "cp310",
+        "macosx_12_0_x86_64"
       ]
     }
   ],
   "path_mappings": {},
-  "pex_version": "2.1.80",
+  "pex_version": "2.1.84",
   "prefer_older_binary": false,
   "requirements": [
     "pytest-cov!=2.12.1,<3.1,>=2.12",
     "pytest==7.0.1"
   ],
   "requires_python": [
-    ">=3.6.2"
+    "<3.11,<3.7,>=3.6.2",
+    "<3.11,==3.10.*,>=3.6.2",
+    "<3.11,==3.7.*,>=3.6.2",
+    "<3.11,==3.8.*,>=3.6.2",
+    "<3.11,==3.9.*,>=3.6.2"
   ],
   "resolver_version": "pip-2020-resolver",
   "style": "universal",
