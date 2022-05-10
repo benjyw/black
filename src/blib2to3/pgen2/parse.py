@@ -32,7 +32,7 @@ from blib2to3.pgen2.grammar import Grammar
 from blib2to3.pytree import convert, NL, Context, RawNode, Leaf, Node
 
 if TYPE_CHECKING:
-    from blib2to3.driver import TokenProxy  # pants: no-infer-dep
+    from blib2to3.driver import TokenProxy
 
 
 Results = Dict[Text, NL]

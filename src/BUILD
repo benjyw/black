@@ -1,7 +1,7 @@
-python_sources(dependencies=[":scm_version"])
+python_sources()
 
 vcs_version(
-    name="scm_version",
+    name="vcs_version",
     generate_to="src/_black_version.py",
     template='version = "{version}"\n',
 )
