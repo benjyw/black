@@ -1,5 +1,5 @@
 # Copyright (C) 2020 Łukasz Langa
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages  # pants: no-infer-dep
 import sys
 import os
 
@@ -39,7 +39,7 @@ if os.getenv("BLACK_USE_MYPYC", None) == "1":
     USE_MYPYC = True
 
 if USE_MYPYC:
-    from mypyc.build import mypycify
+    from mypyc.build import mypycify  # pants: no-infer-dep
 
     src = CURRENT_DIR / "src"
     # TIP: filepaths are normalized to use forward slashes and are relative to ./src/
