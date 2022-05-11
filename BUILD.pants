@@ -15,13 +15,6 @@ python_sources(
 python_sources(
     sources=["setup.py"],
     name="setup_py",
-    interpreter_constraints=parametrize(
-        py36=[">=3.6.2,<3.7"],
-        py37=["==3.7.*"],
-        py38=["==3.8.*"],
-        py39=["==3.9.*"],
-        py310=["==3.10.*"],
-    ),
 )
 
 python_requirements(
@@ -38,8 +31,31 @@ resources(
     sources=["pyproject.toml", "README.md", "CHANGES.md"],
 )
 
-multi_distribution(
-    name = "dist",
+python_distribution(
+    name = "dist-native",
+    dependencies=[
+        ":build_resources",
+        ":setup_py",
+        "src/black",
+    ],
+    interpreter_constraints=parametrize(
+        py36=[">=3.6.2,<3.7"],
+        py37=["==3.7.*"],
+        py38=["==3.8.*"],
+        py39=["==3.9.*"],
+        py310=["==3.10.*"],
+    ),
+    provides=python_artifact(
+        name="black",
+    ),
+    generate_setup = False,
+    sdist = False,
+    wheel = True,
+    uses_mypyc = True,
+)
+
+python_distribution(
+    name = "dist-pure",
     dependencies=[
         ":build_resources",
         ":setup_py",
@@ -49,8 +65,9 @@ multi_distribution(
         name="black",
     ),
     generate_setup = False,
-    sdist = False,
-    uses_mypyc = True,
+    sdist = True,
+    wheel = True,
+    uses_mypyc = False,
 )
 
 files(
