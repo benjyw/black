@@ -1,3 +1,6 @@
+# NOTE: This file is named BUILD.pants and not just BUILD because manually running setup.py
+#  will create a directory named build, and paths on MacOS are case-insensitive.
+
 pex_binary(
     name="fuzz",
     dependencies=[":fuzz_py"],
@@ -35,11 +38,11 @@ resources(
     sources=["pyproject.toml", "README.md", "CHANGES.md"],
 )
 
-python_distribution(
+multi_distribution(
     name = "dist",
     dependencies=[
         ":build_resources",
-        ":setup_py@interpreter_constraints=py36",
+        ":setup_py",
         "src/black",
     ],
     provides=python_artifact(

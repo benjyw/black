@@ -1,5 +1,5 @@
 [GLOBAL]
-pants_version = "2.11.0"
+pants_version = "2.13.0.dev1"
 backend_packages = [
     "pants.backend.python",
     "pants.backend.python.lint.black",
@@ -9,9 +9,15 @@ backend_packages = [
 
 pants_ignore.add = [
     # Various files in the tests/data folders are gitignored, to test file discovery.
-    # Pants ignores gitignored files by default, but don't want Pants to ignore these.
+    # Pants ignores gitignored files by default, but we don't want Pants to ignore these.
     "!tests/data/**",
 ]
+
+build_file_prelude_globs = [
+    "pants_macros.py",
+]
+
+print_stacktrace = true
 
 [source]
 root_patterns = [
