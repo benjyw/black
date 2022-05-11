@@ -5,4 +5,5 @@ resources(
 
 python_sources(
     dependencies=[":grammars"],
+    skip_black=True
 )
