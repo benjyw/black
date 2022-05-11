@@ -12,7 +12,13 @@ python_sources(
 python_sources(
     sources=["setup.py"],
     name="setup_py",
-    interpreter_constraints=[">=3.8,<3.9"],  # TODO: Parametrize
+    interpreter_constraints=parametrize(
+        py36=[">=3.6.2,<3.7"],
+        py37=["==3.7.*"],
+        py38=["==3.8.*"],
+        py39=["==3.9.*"],
+        py310=["==3.10.*"],
+    ),
 )
 
 python_requirements(
@@ -33,13 +39,12 @@ python_distribution(
     name = "dist",
     dependencies=[
         ":build_resources",
-        ":setup_py",
+        ":setup_py@interpreter_constraints=py36",
         "src/black",
     ],
     provides=python_artifact(
         name="black",
     ),
-    wheel_config_settings={"--global-option": ["--python-tag", "py3"]},
     generate_setup = False,
     sdist = False,
     uses_mypyc = True,

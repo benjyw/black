@@ -27,7 +27,12 @@ enabled = true
 repo_id = "C6339CF0-26A0-43B3-8DF0-2E8E2A3DE28C"
 
 [python]
-interpreter_constraints = [">=3.6.2,<3.11"]
+# The default constraints are CPython, and we have tests that include PyPy as a parameterized
+# interpreter_constraints. If such a test depends on a target with no explicit constraint then
+# Pants will fall back to the default, and then fail because CPython and PyPy constraints can't
+# be merged. Therefore we blank out the default constraints, and let the target parameters in
+# any given run set the constraints.
+interpreter_constraints = []
 enable_resolves = true
 resolves = { python-default = "lockfiles/python-default.lock" }
 default_resolve = "python-default"
