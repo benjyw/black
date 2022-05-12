@@ -56,5 +56,12 @@ extra_type_stubs = [
     "typing-extensions > 3.10.0.1",
 ]
 
+[black]
+# Pants attempts to compute a single compatible interpreter to run Black on, but that will fail due
+# to our parametrizing tests across conflicting interpreter constraints. We bypass that logic
+# by setting an interpreter explicitly here.  We set this to the value used to generate the
+# default Black lockfile embedded in Pants, so that we don't have to generate our own lockfile.
+interpreter_constraints = [">=3.7,<4"]
+
 [python-infer]
 unowned_dependency_behavior = "warning"
