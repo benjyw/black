@@ -12,18 +12,25 @@ python_sources(
     name="fuzz_py",
 )
 
+python_requirements(
+    name="fuzz-requirements",
+    source="fuzz_requirements.txt",
+    resolve="default",
+)
+
 python_sources(
     sources=["setup.py"],
     name="setup_py",
 )
 
 python_requirements(
-    name = "requirements",
+    name="requirements",
+    resolve="default",
 )
 
 python_requirements(
-    name = "test-requirements",
-    source = "test_requirements.txt",
+    name="test-requirements",
+    source="test_requirements.txt",
 )
 
 resources(

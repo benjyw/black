@@ -41,9 +41,13 @@ repo_id = "C6339CF0-26A0-43B3-8DF0-2E8E2A3DE28C"
 # any given run set the constraints.
 interpreter_constraints = [">=3.6.2,<3.11","PyPy==3.7.*"]
 enable_resolves = true
-resolves = { python-default = "lockfiles/python-default.lock" }
-default_resolve = "python-default"
+default_resolve = "default"
 lockfile_generator = "pex"
+
+[python.resolves]
+default = "lockfiles/default.lock"
+scripts = "lockfiles/scripts.lock"
+diff_shades = "lockfiles/diff_shades.lock"
 
 [pytest]
 lockfile = "lockfiles/pytest.lock"
