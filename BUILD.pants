@@ -48,10 +48,11 @@ python_distribution(
     provides=python_artifact(
         name="black",
     ),
-    generate_setup = False,
-    sdist = False,
-    wheel = True,
-    uses_mypyc = True,
+    generate_setup=False,
+    sdist=False,
+    wheel=True,
+    uses_mypyc=True,
+    env_vars=["BLACK_USE_MYPYC=1"],
 )
 
 python_distribution(
