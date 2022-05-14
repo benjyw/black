@@ -1,6 +1,10 @@
 python_test_utils(
     name="test_utils",
     sources=["conftest.py", "optional.py", "util.py"],
+    overrides={
+        "conftest.py": {"dependencies": ["tests/optional.py:test_utils"]},
+        "util.py": {"dependencies": ["tests/data"]}
+    }
 )
 
 files(
@@ -10,14 +14,6 @@ files(
 
 python_tests(
     name="tests",
-    dependencies=[
-        "//:test_format_files",
-        ":test_utils",
-        ":toml",
-        "src:extra-d",
-        "src:extra-jupyter",
-        "tests/data"
-    ],
     interpreter_constraints=parametrize(
         py36=[">=3.6.2,<3.7"],
         py37=["==3.7.*"],
@@ -26,4 +22,11 @@ python_tests(
         py310=["==3.10.*"],
         pypy37=["PyPy==3.7.*"],
     ),
+    overrides={
+        "test_black.py": {"dependencies": [":toml"]},
+        "test_blackd.py": {"dependencies": ["src:extra-d"]},
+        "test_format.py": {"dependencies": ["//:test_format_files"]},
+        "test_ipynb.py": {"dependencies": ["src:extra-jupyter"]},
+        "test_no_ipynb.py": {"dependencies": ["src:extra-jupyter"]},
+    }
 )
