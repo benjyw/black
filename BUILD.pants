@@ -78,6 +78,11 @@ python_distribution(
     uses_mypyc = False,
 )
 
+
+# This is necessary because we have a test that operates on the repo's own source files,
+# so they have two roles: A) source files (owned by the python_sources targets in their dirs)
+# and B) test inputs (owned by this target).  This does not cause ambiguity with dependency
+# inference, since a files() target is not considered as a source for Python code imports.
 files(
     name="test_format_files",
     sources=[
