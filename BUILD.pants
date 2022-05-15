@@ -1,11 +1,13 @@
 # NOTE: This file is named BUILD.pants and not just BUILD because manually running setup.py
 #  will create a directory named build, and paths on MacOS are case-insensitive.
+# Fortunately Pants looks at any of BUILD/BUILD.* as valid build files by default.
 
-pex_binary(
-    name="fuzz",
-    dependencies=[":fuzz_py"],
-    entry_point="fuzz.py",
-)
+# TODO: Get this working.
+# pex_binary(
+#     name="fuzz",
+#     dependencies=[":fuzz_py"],
+#     entry_point="fuzz.py",
+# )
 
 python_sources(
     sources=["fuzz.py"],
