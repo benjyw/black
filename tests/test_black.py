@@ -179,8 +179,8 @@ class BlackTestCase(BlackBaseTestCase):
             r"(STDIN|STDOUT)\t\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d\.\d\d\d\d\d\d "
             r"\+\d\d\d\d"
         )
-        source, _ = read_data("expression.py")
-        expected, _ = read_data("expression.diff")
+        source, _ = read_data("simple_cases/expression.py")
+        expected, _ = read_data("simple_cases/expression.diff")
         args = [
             "-",
             "--fast",
@@ -197,7 +197,7 @@ class BlackTestCase(BlackBaseTestCase):
         self.assertEqual(expected, actual)
 
     def test_piping_diff_with_color(self) -> None:
-        source, _ = read_data("expression.py")
+        source, _ = read_data("simple_cases/expression.py")
         args = [
             "-",
             "--fast",
@@ -241,7 +241,7 @@ class BlackTestCase(BlackBaseTestCase):
         self.assertIn(black.TargetVersion.PY38, versions)
 
     def test_expression_ff(self) -> None:
-        source, expected = read_data("expression")
+        source, expected = read_data("simple_cases/expression.py")
         tmp_file = Path(black.dump_to_file(source))
         try:
             self.assertTrue(ff(tmp_file, write_back=black.WriteBack.YES))
@@ -255,8 +255,8 @@ class BlackTestCase(BlackBaseTestCase):
             black.assert_stable(source, actual, DEFAULT_MODE)
 
     def test_expression_diff(self) -> None:
-        source, _ = read_data("expression.py")
-        expected, _ = read_data("expression.diff")
+        source, _ = read_data("simple_cases/expression.py")
+        expected, _ = read_data("simple_cases/expression.diff")
         tmp_file = Path(black.dump_to_file(source))
         diff_header = re.compile(
             rf"{re.escape(str(tmp_file))}\t\d\d\d\d-\d\d-\d\d "
@@ -281,8 +281,8 @@ class BlackTestCase(BlackBaseTestCase):
             self.assertEqual(expected, actual, msg)
 
     def test_expression_diff_with_color(self) -> None:
-        source, _ = read_data("expression.py")
-        expected, _ = read_data("expression.diff")
+        source, _ = read_data("simple_cases/expression.py")
+        expected, _ = read_data("simple_cases/expression.diff")
         tmp_file = Path(black.dump_to_file(source))
         try:
             result = BlackRunner().invoke(
@@ -320,7 +320,7 @@ class BlackTestCase(BlackBaseTestCase):
         black.assert_stable(source, not_normalized, mode=mode)
 
     def test_skip_magic_trailing_comma(self) -> None:
-        source, _ = read_data("expression.py")
+        source, _ = read_data("simple_cases/expression.py")
         expected, _ = read_data("expression_skip_magic_trailing_comma.diff")
         tmp_file = Path(black.dump_to_file(source))
         diff_header = re.compile(
@@ -755,7 +755,7 @@ class BlackTestCase(BlackBaseTestCase):
         self.assertEqual(black.get_features_used(node), {Feature.NUMERIC_UNDERSCORES})
         node = black.lib2to3_parse("123456\n")
         self.assertEqual(black.get_features_used(node), set())
-        source, expected = read_data("function")
+        source, expected = read_data("simple_cases/function.py")
         node = black.lib2to3_parse(source)
         expected_features = {
             Feature.TRAILING_COMMA_IN_CALL,
@@ -765,7 +765,7 @@ class BlackTestCase(BlackBaseTestCase):
         self.assertEqual(black.get_features_used(node), expected_features)
         node = black.lib2to3_parse(expected)
         self.assertEqual(black.get_features_used(node), expected_features)
-        source, expected = read_data("expression")
+        source, expected = read_data("simple_cases/expression.py")
         node = black.lib2to3_parse(source)
         self.assertEqual(black.get_features_used(node), set())
         node = black.lib2to3_parse(expected)
@@ -922,7 +922,7 @@ class BlackTestCase(BlackBaseTestCase):
         self.assertEqual("".join(err_lines), "")
 
     @event_loop()
-    @patch("black.ProcessPoolExecutor", MagicMock(side_effect=OSError))
+    @patch("concurrent.futures.ProcessPoolExecutor", MagicMock(side_effect=OSError))
     def test_works_in_mono_process_only_environment(self) -> None:
         with cache_dir() as workspace:
             for f in [
@@ -939,7 +939,7 @@ class BlackTestCase(BlackBaseTestCase):
             src1 = (THIS_DIR / "data" / "string_quotes.py").resolve()
             self.invokeBlack([str(src1), "--diff", "--check"], exit_code=1)
             # Files which will not be reformatted.
-            src2 = (THIS_DIR / "data" / "composition.py").resolve()
+            src2 = (THIS_DIR / "data" / "simple_cases" / "composition.py").resolve()
             self.invokeBlack([str(src2), "--diff", "--check"])
             # Multi file command.
             self.invokeBlack([str(src1), str(src2), "--diff", "--check"], exit_code=1)
@@ -1168,7 +1168,7 @@ class BlackTestCase(BlackBaseTestCase):
             report = MagicMock()
             # Even with an existing file, since we are forcing stdin, black
             # should output to stdout and not modify the file inplace
-            p = Path(str(THIS_DIR / "data/collections.py"))
+            p = THIS_DIR / "data" / "simple_cases" / "collections.py"
             # Make sure is_file actually returns True
             self.assertTrue(p.is_file())
             path = Path(f"__BLACK_STDIN_FILENAME__{p}")
@@ -1683,7 +1683,7 @@ class TestCaching:
     def test_cache_multiple_files(self) -> None:
         mode = DEFAULT_MODE
         with cache_dir() as workspace, patch(
-            "black.ProcessPoolExecutor", new=ThreadPoolExecutor
+            "concurrent.futures.ProcessPoolExecutor", new=ThreadPoolExecutor
         ):
             one = (workspace / "one.py").resolve()
             with one.open("w") as fobj:
@@ -1792,7 +1792,7 @@ class TestCaching:
     def test_failed_formatting_does_not_get_cached(self) -> None:
         mode = DEFAULT_MODE
         with cache_dir() as workspace, patch(
-            "black.ProcessPoolExecutor", new=ThreadPoolExecutor
+            "concurrent.futures.ProcessPoolExecutor", new=ThreadPoolExecutor
         ):
             failing = (workspace / "failing.py").resolve()
             with failing.open("w") as fobj:
