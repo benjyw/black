@@ -12,16 +12,16 @@ files(
     sources=["*.toml"],
 )
 
-python_tests(
+multi_interpreter_python_tests(
     name="tests",
-    interpreter_constraints=parametrize(
-        py36=[">=3.6.2,<3.7"],
-        py37=["==3.7.*"],
-        py38=["==3.8.*"],
-        py39=["==3.9.*"],
-        py310=["==3.10.*"],
-        pypy37=["PyPy==3.7.*"],
-    ),
+    # interpreter_constraints=parametrize(
+    #     py36=[">=3.6.2,<3.7"],
+    #     py37=["==3.7.*"],
+    #     py38=["==3.8.*"],
+    #     py39=["==3.9.*"],
+    #     py310=["==3.10.*"],
+    #     pypy37=["PyPy==3.7.*"],
+    # ),
     overrides={
         "test_black.py": {"dependencies": [":toml"]},
         "test_blackd.py": {"dependencies": ["src:extra-d"]},
