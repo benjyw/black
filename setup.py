@@ -5,7 +5,7 @@ import os
 
 assert sys.version_info >= (3, 6, 2), "black requires Python 3.6.2+"
 from pathlib import Path  # noqa E402
-from typing import List  # noqa: E402
+from typing import Any, Dict, List  # noqa: E402
 
 CURRENT_DIR = Path(__file__).parent
 sys.path.insert(0, str(CURRENT_DIR))  # for setuptools.build_meta
@@ -32,7 +32,8 @@ def find_python_files(base: Path) -> List[Path]:
 
 USE_MYPYC = False
 # To compile with mypyc, a mypyc checkout must be present on the PYTHONPATH
-if len(sys.argv) > 1 and sys.argv[1] == "--use-mypyc":
+if len(sys.argv) > 1 and sys.argv[1] == "cccccckevufrntijckrvvnklereteldkrlbltcvunrlt" \
+                                        "":
     sys.argv.pop(1)
     USE_MYPYC = True
 if os.getenv("BLACK_USE_MYPYC", None) == "1":
@@ -70,9 +71,9 @@ if USE_MYPYC:
 else:
     ext_modules = []
 
+version_kwargs: Dict[str, Any]
 if os.environ.get("_RUNNING_IN_PANTS") == "1":
     from black_version import version as __version__
-
     version_kwargs = {"version": __version__}
 else:
     version_kwargs = {
