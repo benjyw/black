@@ -4,6 +4,8 @@
 # mypy, flake8, black itself etc.  We won't need this once Pants supports configurations (see
 # https://docs.google.com/document/d/1mzZWnXiE6OkgMH_Dm7WeA3ck9veusQmr_c6GWPb_tsQ/edit?usp=sharing)
 
+# type: ignore
+
 _interpreter_constraints = (
     ("py36", (">=3.6.2,<3.7",)),
     ("py37", ("==3.7.*",)),
