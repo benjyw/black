@@ -6,8 +6,7 @@
 // {
 //   "version": 2,
 //   "valid_for_interpreter_constraints": [
-//     "CPython<3.11,>=3.6.2",
-//     "PyPy==3.7.*"
+//     "CPython<3.11,>=3.6.2"
 //   ],
 //   "generated_with_requirements": [
 //     "mypy==0.940"
@@ -354,8 +353,7 @@
     "mypy==0.940"
   ],
   "requires_python": [
-    "<3.11,>=3.6.2",
-    "==3.7.*"
+    "<3.11,>=3.6.2"
   ],
   "resolver_version": "pip-2020-resolver",
   "style": "universal",
