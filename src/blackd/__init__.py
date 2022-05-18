@@ -20,7 +20,7 @@ import black
 from black.concurrency import maybe_install_uvloop
 import click
 
-from _black_version import version as __version__
+from black_version import version as __version__
 
 # This is used internally by tests to shut down the server prematurely
 _stop_signal = asyncio.Event()

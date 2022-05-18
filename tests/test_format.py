@@ -47,6 +47,8 @@ PREVIEW_CASES: List[str] = [
     "docstring_preview",
 ]
 
+# Mirrors the test_format_files target sources in BUILD.pants.
+# Update that file if you modify this list.
 SOURCES: List[str] = [
     "src/black/__init__.py",
     "src/black/__main__.py",
